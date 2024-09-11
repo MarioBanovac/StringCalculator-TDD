@@ -10,6 +10,6 @@
     "sourceMap": true,                    // Generates source maps for easier debugging
     "outDir": "./dist"                    // Output directory for compiled files
   },
-  "include": ["src", "tests"],            // Include source and test files
+  "include": ["**/*.ts"],            // Include source and test files
   "exclude": ["node_modules"]             // Exclude node_modules folder
 }
