@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                   // Specifies the target ECMAScript version
+    "module": "CommonJS",                 // Use CommonJS for module interoperability (Jest runs on Node.js)
+    "strict": true,                       // Enable all strict type-checking options
+    "esModuleInterop": true,              // Allows default imports from modules with no default export
+    "skipLibCheck": true,                 // Skips type checking of declaration files for faster compilation
+    "forceConsistentCasingInFileNames": true,  // Ensures consistent casing in imports
+    "types": ["jest"],                    // Includes Jest type definitions
+    "sourceMap": true,                    // Generates source maps for easier debugging
+    "outDir": "./dist"                    // Output directory for compiled files
+  },
+  "include": ["src", "tests"],            // Include source and test files
+  "exclude": ["node_modules"]             // Exclude node_modules folder
+}
