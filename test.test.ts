@@ -76,4 +76,20 @@ defineFeature(addFeature, (test) => {
       expect(result).toBe(6);
     });
   });
+  test("Support different delimiters", ({
+    given,
+    when,
+    then,
+  }) => {
+    given("the input is '//;\\n1;2'", () => {
+      input = '//;\n1;2';
+    });
+
+    when("I call the Add method", () => {
+      result = calculator.add(input);
+    });
+    then("the result should be 3", () => {
+      expect(result).toBe(3);
+    });
+  });
 });
