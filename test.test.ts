@@ -60,4 +60,20 @@ defineFeature(addFeature, (test) => {
       expect(result).toBe(55);
     });
   });
+  test("Handle new lines between numbers (instead of commas)", ({
+    given,
+    when,
+    then,
+  }) => {
+    given("the input is '1\\n2,3'", () => {
+      input = "1\n2,3";
+    });
+
+    when("I call the Add method", () => {
+      result = calculator.add(input);
+    });
+    then("the result should be 6", () => {
+      expect(result).toBe(6);
+    });
+  });
 });
