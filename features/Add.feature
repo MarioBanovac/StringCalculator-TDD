@@ -20,3 +20,7 @@ Feature: Add
     Given the input is '1\n2,3'
     When I call the Add method
     Then the result should be 6
+ Scenario: Support different delimiters
+    Given the input is '//;\n1;2'
+    When I call the Add method
+    Then the result should be 3
