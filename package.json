@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest --watch"
+  },
   "keywords": [],
   "author": "Mario Banovac",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
     "typescript": "^5.6.2"
   }
