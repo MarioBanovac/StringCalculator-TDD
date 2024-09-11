@@ -8,6 +8,7 @@
   "author": "Mario Banovac",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
     "typescript": "^5.6.2"
   }
 }
