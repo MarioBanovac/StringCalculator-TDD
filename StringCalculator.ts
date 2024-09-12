@@ -43,7 +43,11 @@ export default class StringCalculator {
   }
 
   private getSum(input: string[]): number {
-    return input.reduce((acc, cur) => acc + parseInt(cur), 0);
+    return input.reduce((acc, cur) => {
+      const currentNumber = parseInt(cur);
+      acc += currentNumber > 1000 ? 0 : currentNumber;
+      return acc;
+    }, 0);
   }
 
   private getNegativeElements(data: string[]): string[] {

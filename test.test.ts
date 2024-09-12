@@ -106,4 +106,16 @@ defineFeature(addFeature, (test) => {
       }
     );
   });
+  test("Ignore numbers bigger than 1000", ({ given, when, then }) => {
+    given("the input is '5,1001'", () => {
+      input = "5,1001";
+    });
+
+    when("I call the Add method", () => {
+      result = calculator.add(input);
+    });
+    then("the result should be 5", () => {
+      expect(result).toBe(5);
+    });
+  });
 });
