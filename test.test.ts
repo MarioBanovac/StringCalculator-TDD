@@ -6,7 +6,7 @@ const addFeature = loadFeature("./features/Add.feature");
 defineFeature(addFeature, (test) => {
   let calculator: StringCalculator;
   let input: string;
-  let result: number;
+  let result: number | Error;
 
   beforeEach(() => {
     calculator = new StringCalculator();
@@ -76,13 +76,9 @@ defineFeature(addFeature, (test) => {
       expect(result).toBe(6);
     });
   });
-  test("Support different delimiters", ({
-    given,
-    when,
-    then,
-  }) => {
+  test("Support different delimiters", ({ given, when, then }) => {
     given("the input is '//;\\n1;2'", () => {
-      input = '//;\n1;2';
+      input = "//;\n1;2";
     });
 
     when("I call the Add method", () => {
@@ -91,5 +87,23 @@ defineFeature(addFeature, (test) => {
     then("the result should be 3", () => {
       expect(result).toBe(3);
     });
+  });
+  test("Negative number as input", ({ given, when, then, and }) => {
+    given("the input is '-1,2,3'", () => {
+      input = "-1,2,3";
+    });
+
+    when("I call the Add method", () => {
+      expect(() => calculator.add(input)).toThrow();
+    });
+    then("an exception should be thrown", () => {});
+    and(
+      "it should contain message 'negatives not allowed' and the input",
+      () => {
+        expect(() => calculator.add(input)).toThrow(
+          `negatives not allowed: -1`
+        );
+      }
+    );
   });
 });

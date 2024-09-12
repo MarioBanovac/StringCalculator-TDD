@@ -24,3 +24,8 @@ Feature: Add
     Given the input is '//;\n1;2'
     When I call the Add method
     Then the result should be 3
+ Scenario: Negative number as input
+    Given the input is '-1,2,3'
+    When I call the Add method
+    Then an exception should be thrown
+    And it should contain message 'negatives not allowed' and the input
