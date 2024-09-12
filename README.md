@@ -12,7 +12,7 @@ StringCalculator implemented using TDD and customer-centric approach by shifting
 ---
 ***Business Requirements***
 
-https://kata-log.rocks/string-calculator-kata
+https://kata-log.rocks/string-calculator-kata (I didn't do steps 7 & 8 & 9 because of the low-level details like RegEx...)
 
 ###  Installation
 
