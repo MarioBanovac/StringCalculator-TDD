@@ -1,31 +1,52 @@
 export default class StringCalculator {
-  add(numbers: string): number | Error {
+  public add(numbers: string): number | Error {
     let stringArr: string[];
     let negativeNumbersArr: string[];
-    if (numbers.length === 0) return 0;
+    const TARGET_PATTERN = /^\/\/(.?)\n/;
+    if (this.isEmpty(numbers)) return 0;
 
-    const delimiterPattern = /^\/\/(.?)\n/;
-    let customDelimiter = null;
-
-    let match = delimiterPattern.exec(numbers);
-    if (match) {
-      customDelimiter = match[1];
-      const cleanedStr = numbers.replace(delimiterPattern, "");
+    let pattern = this.findPattern(TARGET_PATTERN, numbers);
+    if (pattern) {
+      let customDelimiter = this.getDelimiter(pattern);
+      const cleanedStr = numbers.replace(TARGET_PATTERN, "");
       stringArr = cleanedStr.split(customDelimiter);
-      negativeNumbersArr = stringArr.filter((num) => parseInt(num) < 0);
-      if (negativeNumbersArr.length > 0) {
+      negativeNumbersArr = this.getNegativeElements(stringArr);
+      if (this.containsElements(negativeNumbersArr)) {
         throw new Error(`negatives not allowed: ${negativeNumbersArr}`);
       }
-      return cleanedStr
-        .split(customDelimiter)
-        .reduce((acc, cur) => acc + parseInt(cur), 0);
+      return this.getSum(cleanedStr.split(customDelimiter));
     }
 
     stringArr = numbers.split(/[\n,]/);
-    negativeNumbersArr = stringArr.filter((num) => parseInt(num) < 0);
-    if (negativeNumbersArr.length > 0) {
+    negativeNumbersArr = this.getNegativeElements(stringArr);
+    if (this.containsElements(negativeNumbersArr)) {
       throw new Error(`negatives not allowed: ${negativeNumbersArr}`);
     }
-    return numbers.split(/[\n,]/).reduce((acc, cur) => acc + parseInt(cur), 0);
+    return this.getSum(numbers.split(/[\n,]/));
+  }
+
+  private isEmpty(data: string): boolean {
+    return data.length === 0;
+  }
+
+  private containsElements(data: string[]): boolean {
+    return data.length > 0;
+  }
+
+  private findPattern(regEx: RegExp, string: string): RegExpExecArray | null {
+    const pattern = regEx.exec(string);
+    return pattern;
+  }
+
+  private getDelimiter(input: RegExpExecArray): string {
+    return input[1];
+  }
+
+  private getSum(input: string[]): number {
+    return input.reduce((acc, cur) => acc + parseInt(cur), 0);
+  }
+
+  private getNegativeElements(data: string[]): string[] {
+    return data.filter((element) => parseInt(element) < 0);
   }
 }
