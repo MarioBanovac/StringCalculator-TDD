@@ -19,7 +19,7 @@ https://kata-log.rocks/string-calculator-kata (I didn't do steps 7 & 8 & 9 becau
 1. Clone the repository:
 
 ```sh
-git clone [https://github.com/MarioBanovac/StringCalculator-TDD.git](https://github.com/MarioBanovac/StringCalculator-TDD.git)
+git clone https://github.com/MarioBanovac/StringCalculator-TDD.git
 ```
 
 2. Change to the project directory:
